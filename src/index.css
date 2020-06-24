@@ -11,3 +11,93 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.page-layout {
+  display: flex;
+}
+
+/*-----------------ХЭДЕР------------------------*/
+
+header {
+  background-color: red;
+  height: 10%;
+}
+
+/*------------------САЙДБАР-----------------*/
+
+.sidebar {
+  border-right: 1px solid black;
+  width: 25%;
+}
+
+.default-lists {
+  border-bottom: 1px solid black;
+}
+
+/*----------------ОСНОВНОЙ КОНТЕЙНЕР---------------------*/
+
+.page-body {
+  width: 75%;
+}
+
+/*---------------СПИСКИ------------------*/
+
+
+/*---------------ЗАДАЧИ------------------*/
+
+.task {
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  user-select: none;
+}
+
+.task:first-of-type {
+  border-top: 1px solid black;
+}
+
+/*----------------ПОПАП-----------------------*/
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  /*z-index: 0;*/
+}
+
+.modal-wrapper {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 50%;
+  /*z-index: 1050;*/
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+
+}
