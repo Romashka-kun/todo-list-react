@@ -1,4 +1,4 @@
-import demo from "./userData";
+import demo from "./demoData";
 
 const Data = {
   init() {
@@ -27,11 +27,15 @@ const Data = {
   },
 
   addList(list) {
-    this.userData.list.push(list);
+    if (list.name.length > 0) {
+      this.userData.list[new Date().getTime()] = list;
+      this.updateStorage();
+    }
   },
 
   removeList(listId) {
-    this.userData.list.splice(listId, 1);
+    delete this.userData.list[listId];
+    this.updateStorage();
   }
 };
 

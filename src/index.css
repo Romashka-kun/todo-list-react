@@ -54,6 +54,15 @@ header {
 
 /*---------------СПИСКИ------------------*/
 
+.list {
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.list:hover {
+  /*background-color: #787878;*/
+}
 
 /*---------------ЗАДАЧИ------------------*/
 

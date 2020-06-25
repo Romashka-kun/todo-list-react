@@ -4,22 +4,24 @@ import {ListHeading} from "./ListHeading";
 import useModal from "../hooks/useModal";
 import {Modal} from "./Modal";
 import Data from "../data/dataMethods";
-import useTaskRemover from "../hooks/useTaskRemover";
+import useRemover from "../hooks/useRemover";
 
-export const MainPage = ({ listId }) => {
+export const MainPage = ({listId, currentTasks, updateCurrentTasks}) => {
   const allTasks = Data.userData.task;
   const listTasks = Object.keys(allTasks).filter(id => allTasks[id].listId === listId);
   const {isShowing, toggle} = useModal();
-  const {updateCurrentTasks} = useTaskRemover(listTasks);
+  // const {updateCurrentItems} = useRemover(currentTasks);
+  const {updateCurrentItems} = useRemover(listTasks);
 
   return (
     <main className='page-body'>
-      <ListHeading id={listId}/>
+      <ListHeading listId={listId}/>
       <div className='tasks-wrapper'>
-        {listTasks.map(id => <Task id={id} updateCurrentTasks={updateCurrentTasks}/>)}
+        {listTasks.map(id => <Task id={id} updateCurrentItems={updateCurrentItems}/>)}
+        {/*{currentTasks.map(id => <Task id={id} updateCurrentItems={updateCurrentItems} updateCurrentTasks={updateCurrentTasks}/>)}*/}
         <button onClick={toggle}>Добавить задачу</button>
       </div>
-      <Modal isShowing={isShowing} hide={toggle} isTask={true} listId={listId}/>
+      <Modal isShowing={isShowing} hide={toggle} isTask={true} listId={listId} updateCurrentTasks={updateCurrentTasks}/>
     </main>
   );
 };

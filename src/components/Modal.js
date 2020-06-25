@@ -5,7 +5,7 @@ import {ListModal} from "./ListModal";
 import Data from "../data/dataMethods";
 import useForm from "../hooks/useForm";
 
-export const Modal = ({isShowing, hide, isTask, listId}) => {
+export const Modal = ({isShowing, hide, isTask, listId, updateCurrentTasks}) => {
   const [addItem, initialValue] = isTask
     ? ['addTask', { text: '', priority: 1, deadline: 0, listId, completed: false }]
     : ['addList', { name: '', description: '' }];

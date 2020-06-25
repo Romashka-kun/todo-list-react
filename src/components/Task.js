@@ -2,7 +2,7 @@ import React from "react";
 import Data from "../data/dataMethods";
 import deleteIcon from "../resources/deleteIcon.png"
 
-export const Task = ({id, updateCurrentTasks}) => {
+export const Task = ({id, updateCurrentItems, updateCurrentTasks}) => {
   return (
     <div className='task'>
       <label>
@@ -10,7 +10,7 @@ export const Task = ({id, updateCurrentTasks}) => {
         {Data.userData.task[id].text}
       </label>
       <img src={deleteIcon} alt='Delete Icon' onClick={() => {
-        updateCurrentTasks(id);
+        updateCurrentItems(id);
         Data.removeTask(id);
       }}/>
     </div>

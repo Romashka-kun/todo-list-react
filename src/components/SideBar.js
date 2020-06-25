@@ -1,9 +1,20 @@
 import React from "react";
-import demo from "../data/userData";
 import {List} from "./List";
+import Data from "../data/dataMethods";
+import useModal from "../hooks/useModal";
+import {Modal} from "./Modal";
+import useRemover from "../hooks/useRemover";
 
-export function SideBar() {
-  const lists = demo.list.map(list => <h3><List id={list.id}/></h3>);
+export const SideBar = ({listId, updateActiveList, updateCurrentTasks}) => {
+  const dataList = Object.keys(Data.userData.list);
+  const {isShowing, toggle} = useModal();
+  const {updateCurrentItems} = useRemover(dataList);
+  const lists = dataList.map(id => <h3 className='user-list' onClick={() => {
+    updateActiveList(id);
+    updateCurrentTasks(id)
+  }}>
+    <List listId={id} updateCurrentItems={updateCurrentItems} isSideBar/>
+  </h3>);
   return (
     <nav className='sidebar'>
       <div className='default-lists'>
@@ -13,8 +24,9 @@ export function SideBar() {
       </div>
       <div className='user-lists'>
         {lists}
-        <button>Новый список</button>
+        <button onClick={toggle}>Новый список</button>
       </div>
+      <Modal isShowing={isShowing} hide={toggle} isTask={false} listId={listId}/>
     </nav>
   );
-}
+};
